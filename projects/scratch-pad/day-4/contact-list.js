@@ -34,21 +34,63 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
+function makeContact(id, nameFirst, nameLast) { // make sure you get the tests passing for this first
+    var object = {};
+    object.id = id;
+    object.nameFirst = nameFirst;
+    object.nameLast = nameLast;
 
+    return object;
 } 
 
 
-function makeContactList() {
+function makeContactList() { // factory function
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
+        /* length(): returns the number of contacts within the list. */
         length: function() {
             return contacts.length;
+        },
+        /* addContact(contact): takes a contact object to be added to the 
+ *         contact-list. */
+        addContact: function(contact){
+            contacts.push(contact);
+        },
+        /* findContact(fullName): takes a full-name String, like 'Max Gaudin', 
+        and returns the contact object if found in the contacts-list, 
+        or, undefined if the fullName does not match any contacts in the list. */
+        findContact: function(fullName){
+            for (var i = 0; i < contacts.length; i++){
+                if (fullName === contacts[i].nameFirst + " " + contacts[i].nameLast){
+                    return contacts[i];
+                }
+            }
+        },
+        // removeContact(contact): takes a contact object to be removed from the contact-list
+        removeContact: function(contact){
+            var index = contacts.indexOf(contact);
+            if (index !==  -1){
+                contacts.splice(index, 1);
+            }
+        },
+        /* add a printAllContactNames() Function to your makeContactList() factory. 
+        The printAllContactNames() Function should return a String formated with all the 
+        full-names of the separated with a line-break */
+        printAllContactNames: function(){
+            var fullNames = "";
+            for (var i = 0; i < contacts.length; i ++){
+                if (i === contacts.length - 1){
+                    fullNames += contacts[i].nameFirst + " " + contacts[i].nameLast;
+                } else {
+                    fullNames += contacts[i].nameFirst + " " + contacts[i].nameLast + "\n"
+                }
+            }
+            return fullNames;
         }
     }
 }

@@ -51,7 +51,13 @@ function createStartsWithFilter(startsWith) {
 
     // return a function that tests whether a given string starts with the startsWith character
     return function(string){
-        return string.startsWith(startsWith);
+        var newString = string.toLowerCase();
+        var newStartsWith = startsWith.toLowerCase();
+        if (newString[0] === newStartsWith){
+            return true;
+        } else {
+            return false;
+        }
     }    
     
     
@@ -67,7 +73,13 @@ function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
     return function(string){
-        return 
+        var newString1 = string.toLowerCase();
+        var newEndsWith = endsWith.toLowerCase();
+        if (newString1.endsWith(newEndsWith)){
+            return true;
+        } else {
+            return false;
+        }
     }  
     
     

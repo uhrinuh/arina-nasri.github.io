@@ -36,7 +36,7 @@ function isObject(value) {
     // YOUR CODE BELOW HERE //
     
     // is the result of running typeof on value "object" AND is value not an array AND is value not null AND is value not an instance of date object
-    return typeof value === "object" && value !== Array.isArray(value) && value !== null && value !== instanceof Date;
+    return typeof value === "object" && Array.isArray(value) === false && value !== null && value instanceof Date === false;
     
     
     // YOUR CODE ABOVE HERE //
@@ -51,8 +51,14 @@ function isObject(value) {
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
     
-    // return true 
- 
+    // if value is an array OR an object
+    if (Array.isArray(value) === true|| typeof value === "object" && value !== null && value instanceof Date === false){
+        // return true
+        return true;
+    } else {
+        // return false
+        return false;
+    }
     
     // YOUR CODE ABOVE HERE //
 }
@@ -78,24 +84,31 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    // this is fine
     if (typeof value === "string"){
         return "string";
+        // this is fine
     } else if (Array.isArray(value) === true){
         return "array";
-    } else if (typeof value === "object"){
-        return "object";
+        // this is fine
     } else if (typeof value === "undefined"){
         return "undefined";
+        // this is fine
     } else if (typeof value === "number"){
-        return "boolean";
-    } else if (typeof value === "null"){
-        return "object";
+        return "number";
+        // fix this
+    } else if (value === null){
+        return "null";
+        // this is fine
     } else if (typeof value === "function"){
         return "function";
-    } else if (typeof value === "date"){
+        // fix this
+    } else if (value instanceof Date){
         return "date";
+        // fix this
+    } else if (typeof value === "object"){
+        return "object";
     }
-    
     
     
     // YOUR CODE ABOVE HERE //

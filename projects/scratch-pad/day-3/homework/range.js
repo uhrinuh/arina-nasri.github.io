@@ -28,17 +28,21 @@ function range(start, end) {
 
     // create something to collect the output you'll return
     var output = [];
-    
-    // returns an array containing all integers between the two parameters, inclusively
-
-    // if the first argument is greater than the second,
+    // if the start is greater than the end
     if (start > end){
-        // return the range in reverse order
-        for (var i = /* something */; i >= 0; i--){
-            return output.push()
+        // for loop to go through each range
+        for (var i = start; i >= end; i--){
+            // push it in the output
+            output.push(i);
+        }
+    } else {
+        // but if the end is bigger than the start
+        for (var i = start; i <= end; i++){
+            // push it in
+            output.push(i);
         }
     }
-    
+    return output;
     
     // YOUR CODE GOES ABOVE HERE //
 }
