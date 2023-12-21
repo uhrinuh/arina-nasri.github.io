@@ -3,7 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+    var array = [];
+    for (var key in object){
+        array.push(object[key]);
+    }
+    return array;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +15,14 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+    // we have an object
+    // the object has key/value pairs
+    // return the keys in a string each separated with a space
+    var array = [];
+    for (var key in object){
+        array.push(key);
+    }
+    return array.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +30,15 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    // we have an object
+    // return all of its string values in a string each separated with a space
+    var array = [];
+    for (var key in object){
+        if (typeof object[key] === "string"){
+            array.push(object[key]);
+        }
+    }
+    return array.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +46,12 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    // should take one argument and return "array" if its an array and "object" if its an object
+    if (Array.isArray(collection)){
+        return "array";
+    } else {
+        return "object";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +59,14 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    // should take a string of one word
+    // return the word with its first letter capitalized
+    // create substring of og string thats not the first letter
+    // add it to ^^^^^
+    var upperCasedString = string[0].toUpperCase();
+    var sliced = string.slice(1);
+    var newString = upperCasedString + sliced;
+    return newString;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +74,27 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+    // should take a string of words
+    // return a string with all the words capitalized
+    // "one two three four" ONE STRING with multiple words
+    // at the first index which would be O go til the end of the string UP ONE
+
+    // split string into array
+    // make an empty array
+    // iterate through the array and do the whole capitalizing thing
+    // push it into the array
+    // join the array into a string
+    // return it
+    var split = string.split(" ");
+    var array = [];
+    for (i = 0; i < split.length; i++){
+        var upperCasedString = split[i][0].toUpperCase();
+        var sliced = split[i].slice(1);
+        var newString = upperCasedString + sliced;
+        array.push(newString);
+    }
+    var arrayToString = array.join(" ");
+    return arrayToString;
 }
 
 //////////////////////////////////////////////////////////////////////
