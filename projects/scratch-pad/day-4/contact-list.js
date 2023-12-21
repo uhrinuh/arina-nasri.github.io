@@ -83,7 +83,7 @@ function makeContactList() { // factory function
         full-names of the separated with a line-break */
         printAllContactNames: function(){
             var fullNames = "";
-            for (var i = 0; i < contacts.length; i ++){
+            for (var i = 0; i < contacts.length; i++){
                 if (i === contacts.length - 1){
                     fullNames += contacts[i].nameFirst + " " + contacts[i].nameLast;
                 } else {
