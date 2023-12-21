@@ -9,18 +9,18 @@
  * and read every instruction carefully.
  */
 
-const { animal } = require("./data");
+// const { animal } = require("./data");
 
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 function search(animals, name){
-//     for (var i = 0; i < animals.length; i++){
-//       if (animals[i].name === name){
-//         return animals[i];
-//       }
-//     }
-//     return null;
+    for (var i = 0; i < animals.length; i++){
+      if (animals[i].name === name){
+        return animals[i];
+      }
+    }
+    return null;
   }
 
 //////////////////////////////////////////////////////////////////////
