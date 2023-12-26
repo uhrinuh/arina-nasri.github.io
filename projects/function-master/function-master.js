@@ -102,7 +102,17 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    // should take an object with a name property 
+    // return "Welcome <Name>!"
+    var array = [];
+    for (var key in object){
+        var newestObject = object[key][0].toUpperCase();
+        var sliced = object[key].slice(1);
+        var hopeThisWorks = newestObject + sliced;
+        array.push(hopeThisWorks);
+        var arrayToString = array.join(" ");
+        return "Welcome " + arrayToString + "!";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -110,7 +120,9 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    // should take an object with a name and a species
+    // return "<Name> is a <Species>"
+    
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -118,21 +130,33 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-    // determine if object has noises property
-    if (object.noises){ // determine if object.noises resolves to a truthy value
-        return "There IS a noises property."
-    } else { // else it doesn't have a noises property
-        return "There is NO noises property."
-    }
+    // Should take an object, if this object has a noises array return 
+    // them as a string separated by a space
+    // if there are no noises return 'there are no noises'"
+
+  // if this object has a noises arrray
+  if (Array.isArray(object.noises)){
+    // return them as a string separated by a space
+    return object.noises.join(" ")
+  } else { // if there are no noises
+    // return there are no noises
+    return "there are no noises"
+  }
 }
-console.log(maybeNoises({}));
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    // Should take a string of words and a word
+    // return true if <word> is in <string of words>
+    // otherwise return false.
+    if (string.includes(word)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -140,7 +164,11 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+   // Should take a name and an object
+   // add the name to the object's friends array 
+   // return the object
+   object.friends.push(name);
+   return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -148,7 +176,14 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+   // Should take a name and an object
+   // return true if <name> is a friend of <object> 
+   // false otherwise
+    if (object.friends.includes(name)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
