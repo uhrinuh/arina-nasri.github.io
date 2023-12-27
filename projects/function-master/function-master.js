@@ -133,14 +133,15 @@ function maybeNoises(object) {
     // Should take an object, if this object has a noises array return 
     // them as a string separated by a space
     // if there are no noises return 'there are no noises'"
-
   // if this object has a noises arrray
-  if (Array.isArray(object.noises)){
+  if (Array.isArray(object.noises) && object.noises.length !== 0){
     // return them as a string separated by a space
-    return object.noises.join(" ")
-  } else { // if there are no noises
+    return object.noises.join(" ");
+  } if (Array.isArray(object.noises) && object.noises.length === 0){
+    return "there are no noises";
+  }   else { // if there are no noises
     // return there are no noises
-    return "there are no noises"
+    return "there are no noises";
   }
 }
 
@@ -199,7 +200,10 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    // Should take an object, a key and a value. 
+    // Should update the property <key> on <object> with new <value>. 
+    // If <key> does not exist on <object> create it."
+    
 }
 
 //////////////////////////////////////////////////////////////////////
