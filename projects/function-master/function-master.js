@@ -122,7 +122,12 @@ function welcomeMessage(object) {
 function profileInfo(object) {
     // should take an object with a name and a species
     // return "<Name> is a <Species>"
-    
+      // get all values
+  var objValues = Object.values(object);
+  // getting each value individually
+  // taking the first index of the value and making it uppercase while also slicing it after the first letter
+  var array = objValues.map(value => value[0].toUpperCase() + value.slice(1));
+  return array[0] + " is a " + array[1];
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -177,22 +182,41 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-   // Should take a name and an object
-   // return true if <name> is a friend of <object> 
-   // false otherwise
-    if (object.friends.includes(name)){
-        return true;
+    // Should take a name and an object
+    // return true if <name> is inside the object property at the friends value
+    // false otherwise
+    if (object && object.friends && Array.isArray(object.friends)) {
+      return object.friends.includes(name);
     } else {
-        return false;
+      return false;
     }
-}
+  }  
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    // should take a name and a list of people 
+    // and return a list of all the names that <name> is not friends with
+    // if we input "Jimmy" it should return ["Bob"]
+    // if we input "Bob" it should return ["Jimmy", "Liza", "Sara"]
+    // if we input "Sara" it should return ["Bob", "Liza"]
+    // if we input "Liza" it should return ["Bob", "Sara"]
+  for (var i = 0; i < array; i++){
+    // if the name we put in, gives us the name
+    if (array[i].name === name){
+      // we will look at the names's friends
+      var friends = array[i].friends;
+      } // return who they aren't friends with
+      var notFriends = [];
+      for (var j = 0; j < friends.length; i++){
+        if (friends[j] !== name){
+          notFriends.push(friends[j]);
+        }
+      }
+    }
+  return notFriends;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -203,7 +227,11 @@ function updateObject(object, key, value) {
     // Should take an object, a key and a value. 
     // Should update the property <key> on <object> with new <value>. 
     // If <key> does not exist on <object> create it."
-    
+    for (var key in object){
+        if (object[key] = value){
+            
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -211,7 +239,15 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    // Should take an object and an array of strings. 
+    // Should remove any properties on <object> that are listed in <array>
+    for (var key in object){
+        // if property is in the array
+        if (Array.isArray(key[array])){
+        // remove it
+        array.splice(1);
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -219,8 +255,8 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
-}
+    
+ }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
