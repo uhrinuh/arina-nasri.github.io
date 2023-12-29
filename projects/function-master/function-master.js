@@ -227,12 +227,14 @@ function updateObject(object, key, value) {
     // Should take an object, a key and a value. 
     // Should update the property <key> on <object> with new <value>. 
     // If <key> does not exist on <object> create it."
+    object[key] = value;
+    return object;
+  }
     for (var key in object){
-        if (object[key] = value){
-            
+        if (object.hasOwnProperty(key)){
+          object[key] = value;
         }
     }
-}
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
@@ -242,12 +244,12 @@ function removeProperties(object, array) {
     // Should take an object and an array of strings. 
     // Should remove any properties on <object> that are listed in <array>
     for (var key in object){
-        // if property is in the array
-        if (Array.isArray(key[array])){
-        // remove it
-        array.splice(1);
-        }
+      for (var i = 0; i < array.length; i++){
+        if (object.hasOwnProperty(array[i])){
+          delete object[array[i]];
+       }
     }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -255,7 +257,7 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-    
+    return [...new Set(array)];
  }
 
 //////////////////////////////////////////////////////////////////////
