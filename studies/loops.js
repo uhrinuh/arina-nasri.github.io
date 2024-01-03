@@ -29,7 +29,8 @@
  * }
  * 
  * 2. Be able to loop any number of times, forward counting up to some limit, backward counting down to 0
- * Shown in my for loop example and my looping over an array backwards example.
+ * To loop forward counting up to some limit, you change the syntax of the for loop to start it at 0, stop it at whatever number, and update it by incrimiating up by whatever number.
+ * To loop backward counting down to 0, you change the syntax of the for loop to start it at whatever number, stop it at i >= 0, and update it by decrimating down by whatever number.
  * 
  * 3. Loop over an array, forwards and backwards
  * To loop over an array, you must use a for loop
@@ -76,6 +77,13 @@ for (var key in favDucksPlayer){ // using a for in loop to access each key in th
 }
 
 // 2. Be able to loop any number of times, forward counting up to some limit, backward counting down to 0 //
+for (var i = 0; i < 3; i++){ // starting at 0, going up to 2, incrimating by 1 each time
+    console.log(i); // log i to the console
+} // logs 0, 1, 2
+  
+for (var i = 2; i <= 0; i--){ // starting at 2, going down to 0, decrimate by 1 each time
+    console.log(i); // log i to the console
+ } // logs 2, 1, 0
 
 // 3. Loop over an array, forwards and backwords //
 // LOOPING OVER AN ARRAY FORWARDS
