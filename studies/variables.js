@@ -39,6 +39,9 @@
  * Hoisting refers to the process where the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code.
  * With var, you are allowed to reference the value before it is declared, but you can't do that with let and const.
  * AKA, let and const variables can only be referenced once they are declared.
+ * Only the variable name is hoisted to the top and not their assignment.
+ * Function declarations are always hoisted to the top, however functional expressions are not.
+ * Variables only get hoisted inside their own scope.
  */
 
 // 1. Declaration and assignment //
