@@ -37,9 +37,30 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
+function drawChessboard(number) {
+  // set a variable called result to an empty string
+  var result = "";
+  // create spaces and characters
+  for (var i = 0; i < number; i++){
+    // create lines
+    for (var j = 0; j < number; j++){
+      // if the spaces/characters and the lines are evenly matched
+      if ((i + j) % 2 === 0){
+        // we add spaces
+        result += " ";
+        // if its not even
+      } else {
+        // add hashtags
+        result += "#";
+      }
+    }
+    // make new lines each time
+    result += "\n";
+  }
+  console.log(result);
 }
+
+drawChessboard(8);
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

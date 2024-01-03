@@ -61,6 +61,25 @@ _.identity = function(value){
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value){
+    if (typeof value === "string"){
+        return "string";
+    } else if (Array.isArray(value) === true){
+        return "array";
+    } else if (typeof value === "undefined"){
+        return "undefined";
+    } else if (typeof value === "number"){
+        return "number";
+    } else if (value === null){
+        return "null";
+    } else if (typeof value === "function"){
+        return "function";
+    } else if (typeof value === "boolean"){
+        return "boolean";
+    } else if (typeof value === "object"){
+        return "object";
+    }
+}
 
 /** _.first
 * Arguments:
@@ -79,6 +98,20 @@ _.identity = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+
+_.first = function(array, number){
+    if (Array.isArray(array) === false){
+        return [];
+    } if (number === undefined || number === NaN){
+        return array[0];
+    } if (number < 0){
+        return [];
+    } if (number > array.length){
+        return array;
+    } else {
+        return array.slice(0, number);
+    }
+  }
 
 
 /** _.last
@@ -99,6 +132,20 @@ _.identity = function(value){
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number){
+    if (Array.isArray(array) === false){
+        return [];
+    } if (number === undefined || number === NaN){
+        return array[array.length - 1];
+    } if (number < 0){
+        return [];
+    } if (number > array.length){
+        return array;
+    } else {
+        return array.slice(1, array[number.length - 1])
+    }
+}
+
 
 /** _.indexOf
 * Arguments:
@@ -116,6 +163,22 @@ _.identity = function(value){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value){
+    // when given a value
+    // return the index where we first see that value FORGET the other times its there after the first time
+    // if that value doesn't exist in the array
+    // return -1
+
+    // iterate through array
+    for (var i = 0; i < array.length; i++){
+        // if value is found, return index
+        if (array[i] === value){
+            return i;
+        }
+    }
+    // if value is not found, return -1
+    return -1;
+};
 
 /** _.contains
 * Arguments:
@@ -132,6 +195,20 @@ _.identity = function(value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value){
+    // if array contains value
+    // return true
+    // otherwise
+    // return false
+    // what if there Is no value period
+
+    for (var i = 0; i < array.length; i++){
+        if (array[i] === value){
+            return true;
+        }
+    }
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -149,6 +226,23 @@ _.identity = function(value){
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func){
+    // if collection is an array
+    // call function once for each element with the arguments element, index, collection
+    // if collection is an object
+    // call function once for each property with the arguments property's value, key, collection
+
+    for (var i = 0; i < collection.length; i++){
+        if (Array.isArray(collection) === false){
+            func(collection[i], i, collection);
+        }
+    }
+    for (var key in collection){
+        if (typeof collection === "object"){
+            func(collection[key], key, collection);
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
@@ -160,6 +254,9 @@ _.identity = function(value){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(array){
+    return [...new Set(array)];
+}
 
 /** _.filter
 * Arguments:
@@ -177,6 +274,18 @@ _.identity = function(value){
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func){
+    // for each element in array
+    // call function passing the arguments element, index, array
+    // return a new array of elements for which calling function returned true
+    var newArray = [];
+    _.each(array, function(element, index, array){
+        if(func(element, index, array)){
+            newArray.push(element);
+        }
+    });
+    return newArray;
+}
 
 /** _.reject
 * Arguments:
@@ -190,6 +299,16 @@ _.identity = function(value){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, func){
+    var newArray = [];
+    _.each(array, function(element, index, array){
+        if(func(element, index, array) === false){
+            newArray.push(element);
+        }
+    });
+    return newArray;
+}
 
 
 /** _.partition
@@ -319,7 +438,7 @@ _.every = function(collection, func){
         // determine if array
         if (Array.isArray(collection)){
             // iterate through array
-            for (let i =0; i < collection.length; i++){
+            for (let i = 0; i < collection.length; i++){
                 // determine if current item is NOT truthy
                 // ! reverses the logic aka if collection[i] is falsey
                 if (!collection[i]){

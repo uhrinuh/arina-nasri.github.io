@@ -197,26 +197,19 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-    // should take a name and a list of people 
-    // and return a list of all the names that <name> is not friends with
-    // if we input "Jimmy" it should return ["Bob"]
-    // if we input "Bob" it should return ["Jimmy", "Liza", "Sara"]
-    // if we input "Sara" it should return ["Bob", "Liza"]
-    // if we input "Liza" it should return ["Bob", "Sara"]
-  for (var i = 0; i < array; i++){
-    // if the name we put in, gives us the name
-    if (array[i].name === name){
-      // we will look at the names's friends
-      var friends = array[i].friends;
-      } // return who they aren't friends with
-      var notFriends = [];
-      for (var j = 0; j < friends.length; i++){
-        if (friends[j] !== name){
-          notFriends.push(friends[j]);
-        }
-      }
-    }
-  return notFriends;
+  // should take a name and a list of people 
+  // and return a list of all the names that <name> is not friends with
+  // if we input "Jimmy" it should return ["Bob"]
+  // if we input "Bob" it should return ["Jimmy", "Liza", "Sara"]
+  // if we input "Sara" it should return ["Bob", "Liza"]
+  // if we input "Liza" it should return ["Bob", "Sara"]
+var notFriends = [];
+for (var i = 0; i < array.length; i++){
+  if (array[i].friends.includes(name) === false && array[i].name !== name){
+    notFriends.push(array[i].name);
+  }
+}
+return notFriends;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -229,12 +222,7 @@ function updateObject(object, key, value) {
     // If <key> does not exist on <object> create it."
     object[key] = value;
     return object;
-  }
-    for (var key in object){
-        if (object.hasOwnProperty(key)){
-          object[key] = value;
-        }
-    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
