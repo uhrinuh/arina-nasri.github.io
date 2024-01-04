@@ -310,7 +310,6 @@ _.reject = function(array, func){
     return newArray;
 }
 
-
 /** _.partition
 * Arguments:
 *   1) An array
@@ -329,6 +328,19 @@ _.reject = function(array, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+
+_.partition = function(array, func){
+    var truthy = [];
+    var falsy = [];
+    for (var i = 0; i < array.length; i++){
+      if (func(array[i], i, array)){
+        truthy.push(array[i]);
+      } else {
+        falsy.push(array[i]);
+      }
+    }
+    return [truthy, falsy];
+  }
 
 
 /** _.map
@@ -405,6 +417,15 @@ _.map(["a", "b", "c"], function(letter){return letter.toUpperCase()}); // ["A", 
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+// array = array of objects
+// property = key
+
+_.pluck = function(array, property){
+    let object = _.map(array, function(object){
+        return object[property];
+    });
+    return object;
+}
 
 /** _.every
 * Arguments:
@@ -506,6 +527,42 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    // determine if func was not provided
+    if (func === undefined){
+        // determine if array
+        if (Array.isArray(collection)){
+            // iterate through array
+            for (let i = 0; i < collection.length; i++){
+                if (collection[i]){
+                    return true;
+                }
+            }
+        } else {
+            for (let key in collection){
+                if (collection[key]){
+                    return true;
+                }
+            }
+        }
+    } else {
+        if (Array.isArray(collection)){
+            for (let i = 0; i < collection.length; i++){
+                if (func(collection[i], i, collection === true)){
+                    return true;
+                }
+            }
+        } else {
+            for (let key in collection){
+                if (func(collection[key], key, collection) === true){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 
 /** _.reduce
 * Arguments:
@@ -541,6 +598,15 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(target, ...objects){
+    console.log(target, objects);
+    console.log(target);
+    console.log(objects);
+}
+const obj = { a: 1 };
+_.extend(obj, { b: 2 }, { c: 3 });
+// console.log(obj); // { a: 1, b: 2, c: 3 }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
