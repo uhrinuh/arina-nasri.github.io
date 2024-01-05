@@ -600,13 +600,11 @@ _.some = function(collection, func){
 */
 
 _.extend = function(target, ...objects){
-    console.log(target, objects);
-    console.log(target);
-    console.log(objects);
+    for (let i = 0; i < objects.length; i++){
+        Object.assign(target, objects[i]);
+    }
+    return target;
 }
-const obj = { a: 1 };
-_.extend(obj, { b: 2 }, { c: 3 });
-// console.log(obj); // { a: 1, b: 2, c: 3 }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
