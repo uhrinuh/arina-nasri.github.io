@@ -583,6 +583,24 @@ _.some = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed){
+    // initialize an output variable (what we are accumulating)
+    let output;
+    if (seed === undefined){
+        output = array[0];
+        for (let i = 1; i < array.length; i++){
+            // reassign output to result of invoking callback function
+            output = func(output, array[i], i); // func(output), /current item/, /current index/
+        }
+    } else { // else there is a seed value
+        output = seed;
+        for (let i = 0; i < array.length; i++){
+            output = func(output, array[i], i)
+        }
+    }
+    return output;
+}
+
 
 /** _.extend
 * Arguments:

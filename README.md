@@ -20,3 +20,7 @@
 6) In terminal, type => os install
 7) When prompted, enter github username and personal access token
 8) Select project
+
+## Difficulty Producing Tests
+1) Is your terminal in "workspace" using cd ..
+2) Did you type your github repo correctly

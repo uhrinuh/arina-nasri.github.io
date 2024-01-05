@@ -29,6 +29,10 @@ const _ = require('lodown-oliviasaborush');
  
  _IMPORTANT_: Make sure you replace `<YOUR_GITHUB_FOLDER` with your actual github folder in your workspace.
 
+ // filter(), map(), reduce(), maybe each()
+    // filter() => iterate through a collection and return only the items in collection that pass a test
+    // map() => iterate through a collection and return a new collection of "transformed items"
+
 ### 1: `maleCount`
  - **Objective**: Find the number of male customers
  - **Input**: `Array`
