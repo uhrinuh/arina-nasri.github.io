@@ -32,6 +32,7 @@ const _ = require('lodown-oliviasaborush');
  // filter(), map(), reduce(), maybe each()
     // filter() => iterate through a collection and return only the items in collection that pass a test
     // map() => iterate through a collection and return a new collection of "transformed items"
+    // reduce() => accumulated a single return value
 
 ### 1: `maleCount`
  - **Objective**: Find the number of male customers

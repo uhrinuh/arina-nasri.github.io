@@ -44,19 +44,90 @@ var maleCount = function(array){
     return males.length;
 }
 
-var femaleCount;
+/* var femaleCount = function(array){
+    var females = 0;
+    for (var i = 0; i < array.length; i++){
+        if (array[i]["gender"] === "female"){
+            females += 1;
+        }
+    }
+    return females;
+}
+*/
+var femaleCount = function(array){
+    // return the result of reducing through the input array to accumulate the number of female customers
+    return _.reduce(array, function(accumulator, current){
+        if (current.gender === "female"){
+            accumulator += 1;
+        }
+        return accumulator;
+    }, 0)
+}
 
-var oldestCustomer;
+var oldestCustomer = function(array){
+    // use reduce to "accumulate" the oldest customer object
+    let oldest = _.reduce(array, function(accumulator, current){
+        if (current.age > accumulator.age){
+            return current;
+        } else {
+            return accumulator;
+        }
+    })
+    return oldest.name;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngest = _.reduce(array, function(accumulator, current){
+        if (current.age > accumulator.age){
+            return accumulator;
+        } else {
+            return current;
+        }
+    })
+    return youngest.name
+};
 
-var averageBalance;
+// find the average balance of all customers
+// look through the array
+// see which customers have a balance
+// if they have a balance, add all balances together 
+// and divide it by how many customers that have balances there are
+var averageBalance = function(array){
+    let balance = _.reduce(array, function(accumulator, current){
+      return accumulator + current.balance;
+    }, 0);
+    return balance / array.length;
+  }
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+    let givenLetter = _.filter(array, function(customer){
+        // find how many customer's names begin with a given letter
+        if (customer.name[0].toUpperCase() === letter.toUpperCase()){
+            return customer.name;
+        }
+    })
+    return givenLetter.length;
+};
 
-var friendFirstLetterCount;
+// we have a customer
+// each customer has multiple friends
+// return a number of how many friends have a name that starts with a given letter
+var friendFirstLetterCount = function(array, customer, letter){
+    let friendsGivenLetter = _.filter(array, function(customer){
 
-var friendsCount;
+    })
+};
+
+var friendsCount = function(array, name){
+    let customerFriendName = _.filter(array, function(customer){
+        // given a customer's name
+        // return the customer's names that have ^ that customer in their friends list
+        if (customer.friends.includes(name) === true){
+            return customer.name;
+        }
+    })
+    return customerFriendName;
+};
 
 var topThreeTags;
 
