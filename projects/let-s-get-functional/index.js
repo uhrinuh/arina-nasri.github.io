@@ -125,10 +125,12 @@ var firstLetterCount = function(array, letter){
 // given a customer
 // how many of their friends have names that start with the same letter
 var friendFirstLetterCount = function(array, customer, letter){
+    let output = [];
     for (let i = 0; i < array.length; i++){
         if (array[i].name === customer){
             for (let j = 0; j < array[i].friends.length; j++){
-                array[i].friends[j].name;
+                output.push(array[i].friends[j].name);
+                return output.length;
             }
         }
     }
