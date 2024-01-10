@@ -92,12 +92,25 @@ var youngestCustomer = function(array){
 // see which customers have a balance
 // if they have a balance, add all balances together 
 // and divide it by how many customers that have balances there are
+/* var example = "$4,567.89" => 4567.89
+var replaced = example.replace(/[$, ,]/g, ""); // "4567.89"
+*/
 var averageBalance = function(array){
     let balance = _.reduce(array, function(accumulator, current){
-      return accumulator + current.balance;
+        let rightBalance = current.balance.replace(/[$, ,]/g, "");
+        // change rightBalance to a number bc its a string
+        let newBalance = parseFloat(rightBalance);
+        return accumulator + newBalance;
     }, 0);
     return balance / array.length;
   }
+
+// we have an output variable which is undefined
+// does it have a seed? ya
+// goes to the else block
+    // output = 0
+    // i = 0
+    // output = func(0, array[0])
 
 var firstLetterCount = function(array, letter){
     let givenLetter = _.filter(array, function(customer){
@@ -109,13 +122,22 @@ var firstLetterCount = function(array, letter){
     return givenLetter.length;
 };
 
-// we have a customer
-// each customer has multiple friends
-// return a number of how many friends have a name that starts with a given letter
+// given a customer
+// how many of their friends have names that start with the same letter
 var friendFirstLetterCount = function(array, customer, letter){
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name === customer){
+            for (let j = 0; j < array[i].friends.length; j++){
+                array[i].friends[j].name;
+            }
+        }
+    }
     let friendsGivenLetter = _.filter(array, function(customer){
-
+        if (customer.friends.name[0].toUpperCase() === letter.toUpperCase()){
+            return customer.friends.name;
+        }
     })
+    return friendsGivenLetter;
 };
 
 var friendsCount = function(array, name){
@@ -129,9 +151,30 @@ var friendsCount = function(array, name){
     return customerFriendName;
 };
 
-var topThreeTags;
+var topThreeTags = function(array){
+    let commonTag = _.filter(array, function(customer){
 
-var genderCount;
+    })
+};
+
+// use reduce to go through each value in the array and add it to the accumulator
+var genderCount = function(array){
+    let allGenders = _.reduce(array, function(accumulator, current){
+        if (current.gender === "male" || current.gender === "female" || current.gender === "non-binary"){
+            accumulator += 1;
+            return allGenders;
+        }
+        // make a new variable set to an empty object
+        // count how many males there are in allGenders and then set it to male and then add it to object
+        // do that for female and non-binary
+    }, 0)
+};
+// we have an output variable which is undefined
+// if seed === undefined NO
+// else if there is a seed value
+    // output = 0
+    // for (let i = 0)
+    // output = func(0, array[0])
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
