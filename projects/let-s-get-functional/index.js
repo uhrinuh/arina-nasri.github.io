@@ -161,15 +161,22 @@ var topThreeTags = function(array){
 
 // use reduce to go through each value in the array and add it to the accumulator
 var genderCount = function(array){
-    let allGenders = _.reduce(array, function(accumulator, current){
-        if (current.gender === "male" || current.gender === "female" || current.gender === "non-binary"){
-            accumulator += 1;
-            return allGenders;
+    let genderObj = _.reduce(array, function(accumulator, current){
+        let gends = current.gender;
+        for (let i = 0; i < gends.length; i++){
+          // does current gender exist in accumulator?
+            // if it exists what do i do
+          if (accumulator[current.gender]){
+            accumulator[current.gender] += 1;
+            // else it doesn't
+            // if it doesn't exist i need to create it and initialize it a value 
+          } else {
+            accumulator[current.gender] = 1;
+          }
         }
-        // make a new variable set to an empty object
-        // count how many males there are in allGenders and then set it to male and then add it to object
-        // do that for female and non-binary
-    }, 0)
+        return accumulator;
+      }, {});
+      return genderObj;
 };
 // we have an output variable which is undefined
 // if seed === undefined NO
