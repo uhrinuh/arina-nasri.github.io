@@ -2,12 +2,23 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(start, end){
-  let rangeArray = [];
-  for (let i = start; i <= end; i++){
-    rangeArray.push(i);
+function range(start, end, step){
+  let output = [];
+  if (step === undefined){
+    step = 1;
   }
-  return rangeArray;
+  if (step < 0){
+    return [];
+  }
+  if (start === end){
+    return [];
+  }
+  if (step > 0){
+    for (let i = start; i <= end; i += step){
+      output.push(i);
+    }
+  }
+  return output;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
