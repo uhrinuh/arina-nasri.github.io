@@ -130,54 +130,81 @@ var friendFirstLetterCount = function(array, customer, letter){
         if (array[i].name === customer){
             for (let j = 0; j < array[i].friends.length; j++){
                 output.push(array[i].friends[j].name);
-                return output.length;
             }
         }
     }
-    let friendsGivenLetter = _.filter(array, function(customer){
-        if (customer.friends.name[0].toUpperCase() === letter.toUpperCase()){
-            return customer.friends.name;
+    let friendsGivenLetter = _.filter(output, function(friend){
+        if (friend[0].toUpperCase() === letter.toUpperCase()){
+            return true;
         }
     })
-    return friendsGivenLetter;
+    return friendsGivenLetter.length;
 };
-
+ 
+// return the customers that have a specific name in their friends list
 var friendsCount = function(array, name){
-    let customerFriendName = _.filter(array, function(customer){
-        // given a customer's name
-        // return the customer's names that have ^ that customer in their friends list
-        if (customer.friends.includes(name) === true){
-            return customer.name;
+    let customer = array.reduce(function(accumulator, current){
+      // iterate over current.friends array to access
+      for (let i = 0; i < current.friends.length; i++){
+        // if the name is in the friends array, push the name into the accumulator
+        if (current.friends[i].name === name){
+          accumulator.push(current.name);
         }
-    })
-    return customerFriendName;
-};
+      }
+      return accumulator;
+    }, [])
+    return customer;
+  }
 
 var topThreeTags = function(array){
-    let commonTag = _.filter(array, function(customer){
-
+    // create a result object
+    let resultObj = array.reduce(function(accumulator, current){
+      // create a tags array
+      let tags = current.tags;
+      // iterate over the tags array
+      for (let i = 0; i < tags.length; i++){
+        // determine if the current tag ALREADY exists in acc
+        if (accumulator[tags[i]]){
+          // if it exists what do i do
+          accumulator[tags[i]] += 1;
+          // else it doesn't
+          // if it doesn't exist i need to create it and initialize it a value 
+        } else {
+          accumulator[tags[i]] = 1;
+        }
+      }
+      return accumulator;
+    }, {});
+    let resultArr = [];
+    // iterate through resultObj
+    for (var key in resultObj){
+      // push each key/value pair into resultArr
+      resultArr.push([key, resultObj[key]]);
+    }
+    resultArr.sort(function(a, b){
+      return b[1] - a[1];
     })
-};
+    // return array with the highest string followed by 2 follow by 3
+    return [resultArr[0][0], resultArr[1][0], resultArr[2][0]]
+  };
 
 // use reduce to go through each value in the array and add it to the accumulator
 var genderCount = function(array){
-    let genderObj = _.reduce(array, function(accumulator, current){
-        let gends = current.gender;
-        for (let i = 0; i < gends.length; i++){
-          // does current gender exist in accumulator?
-            // if it exists what do i do
-          if (accumulator[current.gender]){
-            accumulator[current.gender] += 1;
-            // else it doesn't
-            // if it doesn't exist i need to create it and initialize it a value 
-          } else {
-            accumulator[current.gender] = 1;
-          }
-        }
-        return accumulator;
-      }, {});
-      return genderObj;
-};
+    // create a result object
+    let result = array.reduce(function(accumulator, current){
+      // determine if the current object's gender ALREADY exists in acc
+      if (accumulator[current.gender]){
+        // if it exists what do i do
+        accumulator[current.gender] += 1;
+        // else it doesn't
+        // if it doesn't exist i need to create it and initialize it a value 
+      } else {
+        accumulator[current.gender] = 1;
+      }
+      return accumulator;
+    }, {});
+    return result;
+  };
 // we have an output variable which is undefined
 // if seed === undefined NO
 // else if there is a seed value
