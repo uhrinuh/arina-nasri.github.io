@@ -130,9 +130,32 @@ function listToArray(list, array=[]) {
 
 // takes an element and a list
 // creates a new list that adds the element to the front of the input list
-function prepend(element, list) {
-  
+/* var example = {
+  value: 2, // node 1
+  rest: {
+    value: 3, // node 2
+    rest: null
+  }
 }
+*/
+//       prepend(1, example)
+function prepend(n, list) {
+  let output = {value: n, rest: list};
+  return output;
+}
+/*
+should return =>
+{
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null
+    }
+  }
+}
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
@@ -141,6 +164,7 @@ function prepend(element, list) {
 // takes a list and a number
 // returns the element at the given position in the list (with 0 referring to the first element)
 // undefined when there is no such element
+// recursion
 function nth(list, num) {
 
 }
