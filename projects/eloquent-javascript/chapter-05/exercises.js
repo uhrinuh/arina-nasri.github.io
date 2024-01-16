@@ -2,16 +2,28 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
-
+// use the reduce method in combo with the concat method to flattern 
+// an array of arrays into a single array that has all the elements
+// of the original arrays
+// 
+function flatten(arrays){
+  // reduce method
+  return arrays.reduce(function(accumulator, current){
+    // return accumulator + current into array
+    return accumulator.concat(current);
+  }, []);
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+// provides something like a for loop
+function loop(value, test, update, body) {
+  // each iteration it first runs the test function on the current loop value
+  // stops if that returns false
+  // then calls the body function giving it the current value
+  // finally, it calls the update function to create a new value and starts from the beginning
 }
 
 // /////////////////////////////////////////////////////////////////////////////
