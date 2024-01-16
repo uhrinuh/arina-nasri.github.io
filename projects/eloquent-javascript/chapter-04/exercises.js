@@ -165,9 +165,34 @@ should return =>
 // returns the element at the given position in the list (with 0 referring to the first element)
 // undefined when there is no such element
 // recursion
-function nth(list, num) {
-
+/* var example = {
+  value: 10, // 0
+  rest: {
+    value: 20, // 1
+    rest: {
+      value: 30 // 2
+      rest: null
+    }
+  }
 }
+*/
+function nth(list, n) {
+  // base
+  if (n === 0){
+    return list.value;
+  } else if (n < 0){
+    return undefined;
+  }
+  // recursion
+  return nth(list.rest, n - 1);
+}
+// invoke nth(example, 1) => 20
+  // if (1 === 0) NO
+  // RECURSION
+    // return nth(rest: { value: 20, rest: { value: 30 rest: null }}, 0)
+      // if (0 === 0) TRUE
+        // return list.value
+          // return 20
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
