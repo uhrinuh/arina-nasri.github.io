@@ -20,18 +20,23 @@ function flatten(arrays){
 
 // provides something like a for loop
 function loop(value, test, update, body) {
-  // each iteration it first runs the test function on the current loop value
-  // stops if that returns false
-  // then calls the body function giving it the current value
-  // finally, it calls the update function to create a new value and starts from the beginning
+  // for (let i = 0; i < array.length; i++)
+  for (let i = value; test(i); i = update(i)){
+    body(i);
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, func) {
+  for (let i = 0; i < array.length; i++){
+    if (!func(array[i])){
+      return false;
+    }
+  }
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
