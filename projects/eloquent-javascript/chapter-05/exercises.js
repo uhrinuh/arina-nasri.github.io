@@ -43,8 +43,29 @@ function every(array, func) {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(string) {
+  // create a variable ltr and initialize as empty array
+  let ltr = [];
+  // create a variable rtl and initialize as empty array
+  let rtl = [];
+  // iterate through input string using for loop
+  for (let i = 0; i < string.length; i++){
+    // create a variable script and assign it the result of invoking characterScript on the current character's char code
+    let script = characterScript(string.charCodeAt(i)); // let script = {...}
+    // determine if script is not equal to null
+    if (script !== null){
+      if (script.direction === "ltr"){
+        ltr.push(script);
+      } else {
+        rtl.push(script);
+      }
+    }
+  }
+  if (ltr.length > rtl.length){
+    return "ltr";
+  } else {
+    return "rtl";
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
